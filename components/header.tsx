@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Phone, Mail, MapPin } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, Phone, Mail, MapPin } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -14,11 +14,11 @@ const navigation = [
   { name: "Track Shipment", href: "/track" },
   { name: "About Us", href: "/about" },
   { name: "Contact", href: "/contact" },
-]
+];
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50">
@@ -28,11 +28,11 @@ export function Header() {
           <div className="hidden items-center gap-6 sm:flex">
             <div className="flex items-center gap-2">
               <Phone className="h-3 w-3" />
-              <span>+254 700 000 000</span>
+              <span>+254 736 758 613</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="h-3 w-3" />
-              <span>info@auraexpress.co.ke</span>
+              <span>auraexpressafrica@gmail.com</span>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -111,7 +111,9 @@ export function Header() {
                 ))}
                 <div className="mt-6 border-t border-border pt-6">
                   <Button className="w-full" asChild>
-                    <Link href="/contact" onClick={() => setIsOpen(false)}>Get In Touch</Link>
+                    <Link href="/contact" onClick={() => setIsOpen(false)}>
+                      Get In Touch
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -120,5 +122,5 @@ export function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }

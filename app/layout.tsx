@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { FloatingButtons } from "@/components/floating-buttons";
 
 const inter = Inter({ subsets: ["latin"] });
 const mono = JetBrains_Mono({ subsets: ["latin"] });
@@ -39,6 +40,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         {children}
         {process.env.NODE_ENV === "production" && <Analytics />}
+        <FloatingButtons />
       </body>
     </html>
   );
