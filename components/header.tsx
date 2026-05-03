@@ -47,7 +47,7 @@ export function Header() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/logo.jpeg"
+              src="/images/logo.png"
               alt="AURA EXPRESS AFRICA LTD"
               width={140}
               height={50}
@@ -87,7 +87,7 @@ export function Header() {
             <SheetContent side="right" className="w-72 bg-white p-6">
               <div className="mb-6">
                 <Image
-                  src="/images/logo.jpeg"
+                  src="/images/logo.png"
                   alt="AURA EXPRESS AFRICA LTD"
                   width={120}
                   height={40}

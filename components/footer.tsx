@@ -31,11 +31,11 @@ export function Footer() {
           <div>
             <Link href="/" className="mb-4 inline-block">
               <Image
-                src="/images/logo.jpeg"
+                src="/images/logo.png"
                 alt="AURA EXPRESS AFRICA LTD"
-                width={140}
-                height={50}
-                className="h-20 w-auto rounded-full"
+                width={100}
+                height={100}
+                className="h-30 w-30 object-contain bg-white rounded-full"
               />
             </Link>
             <p className="mt-4 text-sm text-neutral-400">
