@@ -69,7 +69,7 @@ const keyRoutes = [
 const fleetAdvantages = [
   {
     icon: Truck,
-    title: "Mercedes-Benz Actos & Beiben Prime Movers",
+    title: "Mercedes-Benz Actros & Beiben Prime Movers",
     description:
       "Industry-leading prime movers optimized for heavy-duty regional terrain",
   },
@@ -129,7 +129,7 @@ export default function HomePage() {
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="/images/hero-truck.jpg"
+              src="/images/hero-truck.png"
               alt="AURA EXPRESS AFRICA LTD - Premier Logistics Fleet"
               fill
               className="object-cover"
@@ -335,7 +335,7 @@ export default function HomePage() {
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
                 <Image
-                  src="/images/truck-fleet.jpg"
+                  src="/images/truck-fleet.png"
                   alt="AURA EXPRESS - Mercedes-Benz Actros and Beiben Prime Movers"
                   fill
                   className="object-cover"
