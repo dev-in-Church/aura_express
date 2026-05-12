@@ -78,11 +78,11 @@ const leadershipTeam = [
     role: "Global Sourcing & On-Ground Operations",
     description:
       "Manages the critical intersection of International Procurement and Field Logistics. Oversees vetting of partner carriers, port operations in Mombasa, and cross-border movement of transit goods with deep expertise in customs protocols.",
-    image: "/images/person.png",
+    image: "/images/enos.jpeg",
     fallbackInitials: "EO",
   },
   {
-    name: "Hussein Juma Sadikini",
+    name: "Hussein Juma Sadikin",
     title: "Marketing & Management Consultant",
     role: "Brand Growth & Business Strategy",
     description:
