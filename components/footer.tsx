@@ -35,7 +35,7 @@ export function Footer() {
                 alt="AURA EXPRESS AFRICA LTD"
                 width={100}
                 height={100}
-                className="h-30 w-30 object-contain bg-white rounded-full"
+                className="h-30 w-30 object-contain"
               />
             </Link>
             <p className="mt-4 text-sm text-neutral-400">
