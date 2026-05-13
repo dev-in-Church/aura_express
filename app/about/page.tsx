@@ -87,7 +87,7 @@ const leadershipTeam = [
     role: "Brand Growth & Business Strategy",
     description:
       "Lead consultant for Marketing and Corporate Management. Positions Aura Express as a premium brand within East African logistics, developing strategic partnerships and navigating complex contract negotiations.",
-    image: "/images/person.png",
+    image: "/images/sadikin.jpeg",
     fallbackInitials: "HJ",
   },
 ];
