@@ -82,7 +82,7 @@ const leadershipTeam = [
     fallbackInitials: "EO",
   },
   {
-    name: "Hussein Juma Sadikin",
+    name: "Hussein Juma Sadkin",
     title: "Marketing & Management Consultant",
     role: "Brand Growth & Business Strategy",
     description:
