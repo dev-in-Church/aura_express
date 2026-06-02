@@ -11,7 +11,7 @@ import { Menu, Phone, Mail, MapPin } from "lucide-react";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
-  { name: "Track Shipment", href: "/track" },
+  // { name: "Track Shipment", href: "/track" },
   { name: "About Us", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -74,7 +74,7 @@ export function Header() {
 
           <div className="hidden lg:block">
             <Button size="sm" asChild>
-              <Link href="/contact">Get In Touch</Link>
+              <Link href="/quote">Request Quote</Link>
             </Button>
           </div>
 
@@ -111,8 +111,8 @@ export function Header() {
                 ))}
                 <div className="mt-6 border-t border-border pt-6">
                   <Button className="w-full" asChild>
-                    <Link href="/contact" onClick={() => setIsOpen(false)}>
-                      Get In Touch
+                    <Link href="/quote" onClick={() => setIsOpen(false)}>
+                      Request Quote
                     </Link>
                   </Button>
                 </div>

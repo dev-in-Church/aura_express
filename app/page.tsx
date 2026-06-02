@@ -23,37 +23,44 @@ import {
   Warehouse,
   Phone,
   Mail,
+  Plane,
+  Ship,
+  Container,
 } from "lucide-react";
 
 // Real services based on company profile
 const services = [
   {
     id: 1,
-    name: "International Freight Forwarding",
+    name: "Road Freight",
     description:
-      "Expert handling of containerized and loose cargo from the Port of Mombasa to the hinterlands of East Africa.",
-    icon: Package,
+      "Mercedes-Benz Actros & Beiben prime movers for regional and cross-border transport.",
+    icon: Truck,
+    image: "/images/fleet-truck-road.jpeg",
   },
   {
     id: 2,
-    name: "Regional Transit Excellence",
+    name: "Sea Freight",
     description:
-      "Specialized long-haul routes connecting Kenya to Uganda, Rwanda, South Sudan, and the DRC.",
-    icon: Route,
+      "Ocean cargo services through Mombasa and Lamu ports to international destinations.",
+    icon: Ship,
+    image: "/images/fleet-ship-port.jpeg",
   },
   {
     id: 3,
-    name: "Procurement Management",
+    name: "Air Freight",
     description:
-      "Strategic sourcing and documentation audits ensuring 100% compliance with border and customs regulations.",
-    icon: FileCheck,
+      "Express air cargo through JKIA for time-sensitive shipments across Africa.",
+    icon: Plane,
+    image: "/images/fleet-air-cargo.jpeg",
   },
   {
     id: 4,
-    name: "Asset-Light Supply Chain Solutions",
+    name: "Heavy Haulage",
     description:
-      "Leveraging a vast network of vetted partner carriers to provide scalable capacity for large-scale contracts.",
-    icon: Warehouse,
+      "Specialized low-bed trailers for machinery, equipment, and oversized cargo.",
+    icon: Container,
+    image: "/images/fleet-heavy-haulage.jpeg",
   },
 ];
 
@@ -65,29 +72,37 @@ const keyRoutes = [
   "Mombasa – Goma/Lubumbashi (DRC)",
 ];
 
-// Fleet advantages - based on actual company info
-const fleetAdvantages = [
+// Fleet gallery
+const fleetGallery = [
   {
-    icon: Truck,
-    title: "Mercedes-Benz Actros & Beiben Prime Movers",
-    description:
-      "Industry-leading prime movers optimized for heavy-duty regional terrain",
+    src: "/images/fleet-truck-road.jpeg",
+    alt: "AURA EXPRESS Mercedes truck on the road",
+    title: "Road Freight",
   },
   {
-    icon: Globe,
-    title: "Real-Time GPS Tracking & RECTS",
-    description:
-      "Electronic Cargo Tracking System for maximum security and visibility",
+    src: "/images/fleet-ship-ocean.jpeg",
+    alt: "AURA EXPRESS container ship",
+    title: "Sea Freight",
   },
   {
-    icon: Shield,
-    title: "Comprehensive GIT Insurance",
-    description: "Goods-In-Transit insurance covering all cargo shipments",
+    src: "/images/fleet-air-cargo.jpeg",
+    alt: "AURA EXPRESS cargo plane at JKIA",
+    title: "Air Freight",
   },
   {
-    icon: Users,
-    title: "Professional Vetted Drivers",
-    description: "Experienced drivers trained in cross-border protocols",
+    src: "/images/fleet-heavy-haulage.jpeg",
+    alt: "AURA EXPRESS heavy haulage truck",
+    title: "Heavy Haulage",
+  },
+  {
+    src: "/images/fleet-container-truck.jpeg",
+    alt: "AURA EXPRESS container transport",
+    title: "Container Transport",
+  },
+  {
+    src: "/images/fleet-ship-port.jpeg",
+    alt: "AURA EXPRESS ship at Lamu port",
+    title: "Port Operations",
   },
 ];
 
@@ -125,7 +140,7 @@ export default function HomePage() {
 
       <main className="flex-1">
         {/* Hero Section with Background Image */}
-        <section className="relative min-h-[600px]">
+        <section className="relative min-h-[600px] lg:min-h-[700px]">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -135,14 +150,14 @@ export default function HomePage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-black/70" />
+            <div className="absolute inset-0 bg-black/60" />
           </div>
 
           {/* Content */}
-          <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-28">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
             <div className="max-w-3xl">
-              <div className="mb-6 inline-flex items-center gap-2 border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm">
-                <Truck className="h-4 w-4 text-primary" />
+              <div className="mb-6 inline-flex items-center gap-2 border border-white/20 bg-white/10 px-4 py-2">
+                <Globe className="h-4 w-4 text-primary" />
                 <span className="text-sm font-medium text-white">
                   Your Reliable Partner in International Procurement, Freight,
                   and Logistics
@@ -156,55 +171,72 @@ export default function HomePage() {
               <p className="mb-8 text-lg text-white/90">
                 Premier logistics and procurement firm headquartered in Mombasa,
                 Kenya. Specializing in seamless, high-capacity transport
-                solutions across the East African Northern Corridor.
+                solutions across the East African Northern Corridor - by Road,
+                Sea, and Air.
               </p>
 
               {/* Key Points */}
               <div className="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-5 w-5 text-primary" />
-                  <span className="text-sm text-white">
-                    International Freight
-                  </span>
+                  <span className="text-sm text-white">Road Freight</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-5 w-5 text-primary" />
-                  <span className="text-sm text-white">Customs Compliance</span>
+                  <span className="text-sm text-white">Sea Freight</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-5 w-5 text-primary" />
-                  <span className="text-sm text-white">GPS Tracking</span>
+                  <span className="text-sm text-white">Air Freight</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-5 w-5 text-primary" />
-                  <span className="text-sm text-white">
-                    Asset-Light Solutions
-                  </span>
+                  <span className="text-sm text-white">Heavy Haulage</span>
                 </div>
               </div>
 
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button size="lg" asChild>
-                  <Link href="/contact">
-                    Contact Us
+                  <Link href="/quote">
+                    Request Quote
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white bg-black text-white hover:bg-white hover:text-black"
+                  className="border-white bg-transparent text-white hover:bg-white hover:text-black"
                   asChild
                 >
                   <Link href="/services">Our Services</Link>
                 </Button>
               </div>
             </div>
+
+            {/* Tracking Card */}
+            {/* <Card className="mt-12 max-w-xl border-0 bg-white">
+              <CardContent className="p-6">
+                <h2 className="mb-4 text-lg font-semibold text-foreground">
+                  Track Your Shipment
+                </h2>
+                <form className="flex gap-3" action="/track">
+                  <Input
+                    name="tracking"
+                    placeholder="Enter tracking number (e.g. AEA-2026-001234)"
+                    className="flex-1"
+                  />
+                  <Button type="submit">
+                    <Search className="mr-2 h-4 w-4" />
+                    Track
+                  </Button>
+                </form>
+              </CardContent>
+            </Card> */}
           </div>
         </section>
 
-        {/* Services Preview */}
-        <section className="border-b border-border bg-card">
+        {/* Services with Images */}
+        <section className="border-b border-border">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
             <div className="mb-12 flex items-end justify-between">
               <div>
@@ -212,18 +244,18 @@ export default function HomePage() {
                   What We Offer
                 </p>
                 <h2 className="text-3xl font-bold text-foreground">
-                  Our Core Services
+                  Multi-Modal Logistics Solutions
                 </h2>
                 <p className="mt-2 max-w-2xl text-muted-foreground">
-                  Bridging the gap between global supply chains and regional
-                  delivery with professional expertise and modern solutions.
+                  From road to sea to air - we move your cargo through the most
+                  efficient routes across Africa.
                 </p>
               </div>
               <Link
                 href="/services"
                 className="hidden text-sm font-medium text-primary hover:underline sm:block"
               >
-                View All Services →
+                View All Services
               </Link>
             </div>
 
@@ -233,13 +265,22 @@ export default function HomePage() {
                 return (
                   <Card
                     key={service.id}
-                    className="border-border transition-all hover:border-primary/50 hover:shadow-lg"
+                    className="group overflow-hidden border-border transition-all hover:border-primary/50 hover:shadow-lg"
                   >
-                    <CardContent className="p-6">
-                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                        <Icon className="h-6 w-6 text-primary" />
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={service.name}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/30" />
+                      <div className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center bg-primary">
+                        <Icon className="h-5 w-5 text-white" />
                       </div>
-                      <h3 className="mb-2 text-lg font-semibold text-foreground">
+                    </div>
+                    <CardContent className="p-4">
+                      <h3 className="mb-1 text-lg font-semibold text-foreground">
                         {service.name}
                       </h3>
                       <p className="text-sm text-muted-foreground">
@@ -255,20 +296,60 @@ export default function HomePage() {
               href="/services"
               className="mt-8 block text-center text-sm font-medium text-primary hover:underline sm:hidden"
             >
-              View All Services →
+              View All Services
             </Link>
           </div>
         </section>
 
-        {/* Key Routes - Our Network */}
-        <section className="border-b border-border bg-muted/30">
+        {/* Fleet Gallery */}
+        <section className="border-b border-border bg-neutral-900">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <div className="mb-12 text-center">
+              <p className="mb-2 text-sm font-medium uppercase tracking-wider text-primary">
+                Our Fleet
+              </p>
+              <h2 className="text-3xl font-bold text-white">
+                Built for African Terrain
+              </h2>
+              <p className="mt-2 text-white/70">
+                Mercedes-Benz Actros, Beiben prime movers, cargo aircraft, and
+                container vessels
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+              {fleetGallery.map((item, index) => (
+                <div
+                  key={index}
+                  className="group relative aspect-[4/3] overflow-hidden"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/40 transition-opacity group-hover:bg-black/20" />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-3">
+                    <p className="text-sm font-medium text-white">
+                      {item.title}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Key Routes */}
+        <section className="border-b border-border">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
             <div className="mb-12 text-center">
               <p className="mb-2 text-sm font-medium uppercase tracking-wider text-primary">
                 Our Network
               </p>
               <h2 className="text-3xl font-bold text-foreground">
-                Dominating East Africa's Logistics Artery
+                Dominating East Africa&apos;s Logistics Artery
               </h2>
               <p className="mt-2 max-w-2xl mx-auto text-muted-foreground">
                 We provide reliable transit on the following key routes across
@@ -281,7 +362,7 @@ export default function HomePage() {
                 <Card key={index} className="border-border bg-card">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3">
-                      <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
+                      <Route className="h-5 w-5 text-primary flex-shrink-0" />
                       <span className="text-foreground font-medium">
                         {route}
                       </span>
@@ -293,8 +374,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Why Choose Us - Competitive Edge */}
-        <section className="border-b border-border">
+        {/* Why Choose Us */}
+        <section className="border-b border-border bg-muted/30">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
             <div className="mb-12 text-center">
               <p className="mb-2 text-sm font-medium uppercase tracking-wider text-primary">
@@ -304,7 +385,7 @@ export default function HomePage() {
                 Our Competitive Edge
               </h2>
               <p className="mt-2 text-lg italic text-primary">
-                "Efficiency is not an option; it is our standard."
+                &quot;Efficiency is not an option; it is our standard.&quot;
               </p>
             </div>
 
@@ -313,8 +394,8 @@ export default function HomePage() {
                 const Icon = advantage.icon;
                 return (
                   <div key={index} className="text-center">
-                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10">
-                      <Icon className="h-7 w-7 text-primary" />
+                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center bg-primary">
+                      <Icon className="h-7 w-7 text-white" />
                     </div>
                     <h3 className="mb-2 font-semibold text-foreground">
                       {advantage.title}
@@ -329,14 +410,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Fleet & Technology Section */}
-        <section className="border-b border-border bg-card">
+        {/* Fleet & Technology Section with Image */}
+        <section className="border-b border-border">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
-                  src="/images/truck-fleet.png"
-                  alt="AURA EXPRESS - Mercedes-Benz Actros and Beiben Prime Movers"
+                  src="/images/fleet-container-truck.jpeg"
+                  alt="AURA EXPRESS - Container transport truck"
                   fill
                   className="object-cover"
                 />
@@ -344,41 +425,53 @@ export default function HomePage() {
 
               <div>
                 <p className="mb-2 text-sm font-medium uppercase tracking-wider text-primary">
-                  Our Fleet & Technology
+                  Technology & Compliance
                 </p>
                 <h2 className="mb-6 text-3xl font-bold text-foreground">
-                  Built for East African Terrain
+                  Real-Time Visibility & Security
                 </h2>
                 <p className="mb-6 text-muted-foreground">
-                  Our operations utilize industry-leading Mercedes-Benz Actros
-                  and Beiben prime movers, optimized for heavy-duty regional
-                  terrain. Every shipment is monitored via Real-Time GPS
-                  Tracking and the Electronic Cargo Tracking System (RECTS) for
-                  maximum security.
+                  Every shipment is monitored via Real-Time GPS Tracking and the
+                  Electronic Cargo Tracking System (RECTS) for maximum security.
+                  Our operations are backed by comprehensive Goods-In-Transit
+                  insurance.
                 </p>
 
-                <div className="space-y-4">
-                  {fleetAdvantages.map((item, index) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={index} className="flex gap-3">
-                        <div className="flex-shrink-0">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-                            <Icon className="h-4 w-4 text-primary" />
-                          </div>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground">
-                            {item.title}
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            {item.description}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                    <div>
+                      <span className="font-medium text-foreground">
+                        Real-Time GPS Tracking & RECTS
+                      </span>
+                      <p className="text-sm text-muted-foreground">
+                        Electronic Cargo Tracking System for maximum security
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                    <div>
+                      <span className="font-medium text-foreground">
+                        Comprehensive GIT Insurance
+                      </span>
+                      <p className="text-sm text-muted-foreground">
+                        Goods-In-Transit insurance covering all cargo
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                    <div>
+                      <span className="font-medium text-foreground">
+                        Professional Vetted Drivers
+                      </span>
+                      <p className="text-sm text-muted-foreground">
+                        Experienced drivers trained in cross-border protocols
+                      </p>
+                    </div>
+                  </li>
+                </ul>
 
                 <Button className="mt-8" asChild>
                   <Link href="/about">Learn More About Us</Link>
@@ -388,13 +481,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Vision & Mission Preview */}
+        {/* Vision & Mission */}
         <section className="border-b border-border">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
             <div className="grid gap-8 md:grid-cols-2">
-              <Card className="border-border bg-card">
+              <Card className="border-border">
                 <CardContent className="p-8 text-center">
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 mx-auto">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center bg-primary/10 mx-auto">
                     <Target className="h-7 w-7 text-primary" />
                   </div>
                   <h3 className="mb-3 text-xl font-semibold text-foreground">
@@ -407,9 +500,9 @@ export default function HomePage() {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="border-border bg-card">
+              <Card className="border-border">
                 <CardContent className="p-8 text-center">
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 mx-auto">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center bg-primary/10 mx-auto">
                     <Globe className="h-7 w-7 text-primary" />
                   </div>
                   <h3 className="mb-3 text-xl font-semibold text-foreground">
@@ -440,12 +533,12 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button size="lg" variant="secondary" asChild>
-                  <Link href="/contact">Contact Us Today</Link>
+                  <Link href="/quote">Request Quote</Link>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white bg-primary text-white hover:bg-white hover:text-primary"
+                  className="border-white bg-transparent text-white hover:bg-white hover:text-primary"
                   asChild
                 >
                   <Link href="/services">Explore Our Services</Link>
