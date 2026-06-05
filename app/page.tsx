@@ -416,7 +416,7 @@ export default function HomePage() {
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
-                  src="/images/fleet-container-truck.jpeg"
+                  src="/images/truck-fleet.png"
                   alt="AURA EXPRESS - Container transport truck"
                   fill
                   className="object-cover"

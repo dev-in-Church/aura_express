@@ -65,7 +65,7 @@ const competitiveAdvantages = [
 const leadershipTeam = [
   {
     name: "Billy Aura",
-    title: "Managing Director",
+    title: "C.E.O & Managing Director",
     role: "Strategic Vision & Operations Oversight",
     description:
       "Founder with specialized background in Procurement and Supply Chain Management. Spearheaded the 'Asset-Light' strategy, transforming complex logistics challenges into streamlined, high-efficiency operations across the Northern Corridor.",

@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 
 const countries = [
   "Kenya",
@@ -54,12 +54,69 @@ const routes = [
   "Other (specify below)",
 ];
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function QuotePage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [formData, setFormData] = useState({
+    origin_country: "",
+    cargo_type: "",
+    transport_mode: "",
+    cargo_quantity: "",
+    cargo_dimensions: "",
+    cargo_weight: "",
+    route: "",
+    route_details: "",
+    delivery_country: "",
+    final_destination: "",
+    full_name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  });
+
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch(`${API_URL}/api/quotes`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          cargo_quantity: formData.cargo_quantity
+            ? parseInt(formData.cargo_quantity)
+            : null,
+          cargo_weight: formData.cargo_weight
+            ? parseFloat(formData.cargo_weight)
+            : null,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit quote request");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -74,11 +131,35 @@ export default function QuotePage() {
             <h1 className="mb-4 text-2xl font-bold text-foreground">
               Request Submitted
             </h1>
-            <p className="mb-8 text-muted-foreground">
+            <p className="mb-2 text-muted-foreground">
               Thank you for your quote request. Our team will review your cargo
               details and get back to you within 24 hours.
             </p>
-            <Button onClick={() => setSubmitted(false)}>
+            <p className="mb-8 text-sm text-muted-foreground">
+              A confirmation email has been sent to your email address.
+            </p>
+            <Button
+              onClick={() => {
+                setSubmitted(false);
+                setFormData({
+                  origin_country: "",
+                  cargo_type: "",
+                  transport_mode: "",
+                  cargo_quantity: "",
+                  cargo_dimensions: "",
+                  cargo_weight: "",
+                  route: "",
+                  route_details: "",
+                  delivery_country: "",
+                  final_destination: "",
+                  full_name: "",
+                  email: "",
+                  phone: "",
+                  company: "",
+                  message: "",
+                });
+              }}
+            >
               Submit Another Request
             </Button>
           </div>
@@ -109,6 +190,12 @@ export default function QuotePage() {
         {/* Quote Form */}
         <section className="py-12">
           <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+            {error && (
+              <div className="mb-6 rounded-lg bg-red-50 p-4 text-red-600">
+                {error}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Cargo Details Section */}
               <div>
@@ -118,16 +205,16 @@ export default function QuotePage() {
 
                 <div className="space-y-6">
                   <div>
-                    <Select>
+                    <Select
+                      value={formData.origin_country}
+                      onValueChange={(v) => handleChange("origin_country", v)}
+                    >
                       <SelectTrigger className="h-12">
                         <SelectValue placeholder="Select Origin Country" />
                       </SelectTrigger>
                       <SelectContent>
                         {countries.map((country) => (
-                          <SelectItem
-                            key={country}
-                            value={country.toLowerCase().replace(" ", "-")}
-                          >
+                          <SelectItem key={country} value={country}>
                             {country}
                           </SelectItem>
                         ))}
@@ -139,16 +226,16 @@ export default function QuotePage() {
                   </div>
 
                   <div>
-                    <Select>
+                    <Select
+                      value={formData.cargo_type}
+                      onValueChange={(v) => handleChange("cargo_type", v)}
+                    >
                       <SelectTrigger className="h-12">
                         <SelectValue placeholder="Select Cargo Type" />
                       </SelectTrigger>
                       <SelectContent>
                         {cargoTypes.map((type) => (
-                          <SelectItem
-                            key={type}
-                            value={type.toLowerCase().replace(" ", "-")}
-                          >
+                          <SelectItem key={type} value={type}>
                             {type}
                           </SelectItem>
                         ))}
@@ -160,16 +247,16 @@ export default function QuotePage() {
                   </div>
 
                   <div>
-                    <Select>
+                    <Select
+                      value={formData.transport_mode}
+                      onValueChange={(v) => handleChange("transport_mode", v)}
+                    >
                       <SelectTrigger className="h-12">
                         <SelectValue placeholder="Select Transport Mode" />
                       </SelectTrigger>
                       <SelectContent>
                         {transportModes.map((mode) => (
-                          <SelectItem
-                            key={mode}
-                            value={mode.toLowerCase().replace(/ /g, "-")}
-                          >
+                          <SelectItem key={mode} value={mode}>
                             {mode}
                           </SelectItem>
                         ))}
@@ -185,6 +272,10 @@ export default function QuotePage() {
                       type="text"
                       placeholder="Cargo Quantity"
                       className="h-12"
+                      value={formData.cargo_quantity}
+                      onChange={(e) =>
+                        handleChange("cargo_quantity", e.target.value)
+                      }
                     />
                     <p className="mt-1.5 text-sm text-muted-foreground">
                       Provide the total count of cargo units
@@ -195,6 +286,10 @@ export default function QuotePage() {
                     <Textarea
                       placeholder="Cargo Dimensions"
                       className="min-h-[100px] resize-none"
+                      value={formData.cargo_dimensions}
+                      onChange={(e) =>
+                        handleChange("cargo_dimensions", e.target.value)
+                      }
                     />
                     <p className="mt-1.5 text-sm text-muted-foreground">
                       Please enter cargo dimensions in meters (L x W x H)
@@ -206,6 +301,10 @@ export default function QuotePage() {
                       type="text"
                       placeholder="Cargo Weight"
                       className="h-12"
+                      value={formData.cargo_weight}
+                      onChange={(e) =>
+                        handleChange("cargo_weight", e.target.value)
+                      }
                     />
                     <p className="mt-1.5 text-sm text-muted-foreground">
                       Indicate cargo weight in tonnes
@@ -222,16 +321,16 @@ export default function QuotePage() {
 
                 <div className="space-y-6">
                   <div>
-                    <Select>
+                    <Select
+                      value={formData.route}
+                      onValueChange={(v) => handleChange("route", v)}
+                    >
                       <SelectTrigger className="h-12">
                         <SelectValue placeholder="Select Cargo Route" />
                       </SelectTrigger>
                       <SelectContent>
                         {routes.map((route) => (
-                          <SelectItem
-                            key={route}
-                            value={route.toLowerCase().replace(/ /g, "-")}
-                          >
+                          <SelectItem key={route} value={route}>
                             {route}
                           </SelectItem>
                         ))}
@@ -246,6 +345,10 @@ export default function QuotePage() {
                     <Textarea
                       placeholder="Cargo Route Details"
                       className="min-h-[100px] resize-none"
+                      value={formData.route_details}
+                      onChange={(e) =>
+                        handleChange("route_details", e.target.value)
+                      }
                     />
                     <p className="mt-1.5 text-sm text-muted-foreground">
                       Indicate any extra Cargo Route details
@@ -257,6 +360,10 @@ export default function QuotePage() {
                       type="text"
                       placeholder="Cargo Delivery Country"
                       className="h-12"
+                      value={formData.delivery_country}
+                      onChange={(e) =>
+                        handleChange("delivery_country", e.target.value)
+                      }
                     />
                     <p className="mt-1.5 text-sm text-muted-foreground">
                       Indicate the destination country for the cargo
@@ -268,6 +375,10 @@ export default function QuotePage() {
                       type="text"
                       placeholder="Final Destination"
                       className="h-12"
+                      value={formData.final_destination}
+                      onChange={(e) =>
+                        handleChange("final_destination", e.target.value)
+                      }
                     />
                     <p className="mt-1.5 text-sm text-muted-foreground">
                       Indicate exact location of delivery
@@ -286,9 +397,13 @@ export default function QuotePage() {
                   <div>
                     <Input
                       type="text"
-                      placeholder="Your Name"
+                      placeholder="Your Full Name"
                       className="h-12"
                       required
+                      value={formData.full_name}
+                      onChange={(e) =>
+                        handleChange("full_name", e.target.value)
+                      }
                     />
                   </div>
 
@@ -298,6 +413,8 @@ export default function QuotePage() {
                       placeholder="Email Address"
                       className="h-12"
                       required
+                      value={formData.email}
+                      onChange={(e) => handleChange("email", e.target.value)}
                     />
                   </div>
 
@@ -306,7 +423,18 @@ export default function QuotePage() {
                       type="tel"
                       placeholder="Phone Number"
                       className="h-12"
-                      required
+                      value={formData.phone}
+                      onChange={(e) => handleChange("phone", e.target.value)}
+                    />
+                  </div>
+
+                  <div>
+                    <Input
+                      type="text"
+                      placeholder="Company Name (Optional)"
+                      className="h-12"
+                      value={formData.company}
+                      onChange={(e) => handleChange("company", e.target.value)}
                     />
                   </div>
 
@@ -314,13 +442,27 @@ export default function QuotePage() {
                     <Textarea
                       placeholder="Your Message to us"
                       className="min-h-[120px] resize-none"
+                      value={formData.message}
+                      onChange={(e) => handleChange("message", e.target.value)}
                     />
                   </div>
                 </div>
               </div>
 
-              <Button type="submit" size="lg" className="w-full sm:w-auto">
-                SEND REQUEST
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full sm:w-auto"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "SEND REQUEST"
+                )}
               </Button>
             </form>
           </div>
