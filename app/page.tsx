@@ -198,7 +198,7 @@ export default function HomePage() {
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button size="lg" asChild>
                   <Link href="/quote">
-                    Request Quote
+                    Request Invoice
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -533,7 +533,7 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button size="lg" variant="secondary" asChild>
-                  <Link href="/quote">Request Quote</Link>
+                  <Link href="/quote">Request Invoice</Link>
                 </Button>
                 <Button
                   size="lg"

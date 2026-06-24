@@ -132,8 +132,8 @@ export default function QuotePage() {
               Request Submitted
             </h1>
             <p className="mb-2 text-muted-foreground">
-              Thank you for your quote request. Our team will review your cargo
-              details and get back to you within 24 hours.
+              Thank you for your quote invoice request. Our team will review
+              your cargo details and get back to you within 24 hours.
             </p>
             <p className="mb-8 text-sm text-muted-foreground">
               A confirmation email has been sent to your email address.
@@ -178,11 +178,11 @@ export default function QuotePage() {
         <section className="border-b border-border bg-muted/30">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold text-foreground">
-              Request a Quote
+              Make Your Quote
             </h1>
             <p className="mt-2 text-muted-foreground">
               Fill in your cargo details and we&apos;ll provide you with a
-              competitive quote.
+              competitive invoice.
             </p>
           </div>
         </section>

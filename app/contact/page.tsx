@@ -45,12 +45,12 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: ["+254 41 234 5678", "+254 700 123 456"],
+    details: ["+254 736 758 613", ""],
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["info@auraexpress.co.ke", "quotes@auraexpress.co.ke"],
+    details: ["auraexpressafrica@gmail.com", "quotes@auraexpressafricaltd.com"],
   },
   {
     icon: Clock,
@@ -404,7 +404,7 @@ export default function ContactPage() {
                 </p>
               </div>
               <Button variant="secondary" size="lg" asChild>
-                <a href="/quote">Request Quote</a>
+                <a href="/quote">Request Invoice</a>
               </Button>
             </div>
           </div>

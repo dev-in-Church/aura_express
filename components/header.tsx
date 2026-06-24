@@ -74,7 +74,7 @@ export function Header() {
 
           <div className="hidden lg:block">
             <Button size="sm" asChild>
-              <Link href="/quote">Request Quote</Link>
+              <Link href="/quote">Request Invoice</Link>
             </Button>
           </div>
 
@@ -112,7 +112,7 @@ export function Header() {
                 <div className="mt-6 border-t border-border pt-6">
                   <Button className="w-full" asChild>
                     <Link href="/quote" onClick={() => setIsOpen(false)}>
-                      Request Quote
+                      Request Invoice
                     </Link>
                   </Button>
                 </div>
