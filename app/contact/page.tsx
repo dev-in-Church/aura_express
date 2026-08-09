@@ -404,7 +404,7 @@ export default function ContactPage() {
                 </p>
               </div>
               <Button variant="secondary" size="lg" asChild>
-                <a href="/quote">Request Invoice</a>
+                <a href="/quote">Request Quote</a>
               </Button>
             </div>
           </div>
