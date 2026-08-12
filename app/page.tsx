@@ -506,7 +506,7 @@ export default function HomePage() {
                     <Globe className="h-7 w-7 text-primary" />
                   </div>
                   <h3 className="mb-3 text-xl font-semibold text-foreground">
-                    Our Vision 2030
+                    Our Vision 2080
                   </h3>
                   <p className="text-muted-foreground">
                     To become the leading digital-first logistics integrator in
